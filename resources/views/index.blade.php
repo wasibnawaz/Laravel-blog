@@ -20,7 +20,7 @@
     <!-- Responsive-->
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <!-- fevicon -->
-    <link rel="icon" href="{{$favicon_url}}" type="image/gif" />
+    <link rel="icon" href="{{ $favicon_url }}" type="image/gif" />
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
@@ -33,6 +33,24 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 <!-- body -->
+<style>
+    #blogList:nth-child(2n+1) .image-container {
+        order: 1;
+    }
+
+    #blogList:nth-child(2n+1) .content-container {
+        order: 2;
+    }
+
+    /* For odd blog items (nth-child(2n)) */
+    #blogList:nth-child(2n) .image-container {
+        order: 2;
+    }
+
+    #blogList:nth-child(2n) .content-container {
+        order: 1;
+    }
+</style>
 
 <body class="main-layout">
     <!-- loader  -->

@@ -20,7 +20,7 @@
     <!-- Responsive-->
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="{{ $favicon_url }}" type="image/gif" />
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
@@ -126,12 +126,11 @@
                                 </div>
                             </div>
                         @else
-                            <p>No post found.</p>
                         @endif
                     </div>
                     <div class="col-4">
                         @php
-                            $posts = $posts->sortByDesc('updated_at')->take(3);
+                            $posts = $posts->shuffle()->take(3);
                         @endphp
                         @foreach ($posts as $post)
                             <div class="row d_flex blog-item" id="blogList">
@@ -144,13 +143,14 @@
                                 </div>
                                 <div class="col-lg-12 content-container">
                                     <div class="titlepage">
-                                        <span><i class="fa fa-user"></i> {{ $post->category->name }}</span>
-                                        <p class="blog-title" style="font-size:25px;margin-top:10px;font-weight:600">
+                                        <span class="text-truncate"><i class="fa fa-user"></i>
+                                            {{ $post->category->name }}</span>
+                                        <p class="blog-title text-truncate"
+                                            style="font-size:25px;margin-top:0px;font-weight:600">
                                             {{ $post->name }}</p>
                                         <p class="blog-content" style="overflow:hidden;height:11vh;">
                                             {{ $post->description }}</p>
-                                        <a class="read_more" href="{{ route('show', $post->id) }}"
-                                            style="background:none">Read More</a>
+                                        <a class="read_more" href="{{ route('show', $post->id) }}">Read More</a>
                                     </div>
                                 </div>
                             </div>
