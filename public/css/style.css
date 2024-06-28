@@ -231,6 +231,7 @@ button {
     font-weight: bold;
     padding: 0;
     display: inline-block;
+    margin-top: 15px;
 }
 
 .titlepage p {
@@ -681,8 +682,8 @@ ul.email li a i {
 }
 
 .perfect .titlepage {
-    padding-top: 40px;
-    max-width: 550px;
+    padding-top: 20px;
+    max-width: 700px;
     width: 100%;
     float: left;
 }

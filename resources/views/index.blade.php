@@ -20,7 +20,7 @@
     <!-- Responsive-->
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="{{$favicon_url}}" type="image/gif" />
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
@@ -191,7 +191,7 @@
     <div class="perfect">
         <div class="container_width">
             @php
-                $posts = $posts->sortByDesc('updated_at')->take(4);
+                $posts = $posts->sortBy('updated_at')->take(4);
             @endphp
             @foreach ($posts as $post)
                 <div class="row d_flex blog-item" id="blogList">

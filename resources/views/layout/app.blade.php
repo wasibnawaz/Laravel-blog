@@ -18,7 +18,7 @@
 
 <body>
     <header>
-        <!-- Header content -->
+        <!-- Header content --> 
         <nav class="navbar navbar-expand-lg navbar-light bg-orange">
             <div class="container-fluid">
                 <a class="navbar-brand text-white" href="/dashboard">{{ $brand_name }}</a>

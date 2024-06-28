@@ -104,28 +104,59 @@
     <body class="main-layout">
         <div class="perfect" style="margin-top:100px">
             <div class="container_width">
-                @if ($post)
-                    <div class="row d_flex blog-item" id="blogList">
-                        <div class="col-lg-6 image-container">
-                            <div class="perfect_img">
-                                <span>{{ $post->updated_at->format('d M Y') }}</span>
-                                <figure><img src="{{ asset('images/' . $post->image) }}" alt="#"
-                                        style="object-fit: cover; width: 50vw; height: 60vh;" /></figure>
+                <div class="row">
+                    <div class="col-8">
+                        @if ($post)
+                            <div class="row d_flex blog-item" id="blogList">
+                                <div class="col-lg-12 image-container">
+                                    <div class="perfect_img">
+                                        <span>{{ $post->updated_at->format('d M Y') }}</span>
+                                        <figure><img src="{{ asset('images/' . $post->image) }}" alt="#"
+                                                style="object-fit: cover; width: 50vw; height: 60vh;" /></figure>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 content-container">
+                                    <div class="titlepage">
+                                        <span><i class="fa fa-user"></i> {{ $post->category->name }}</span>
+                                        <h2 class="blog-title">{{ $post->name }}</h2>
+                                        <p class="blog-content">{{ $post->description }}</p>
+                                        <!-- Optional: Add a link to view the full post -->
+                                        <a class="read_more" href="{{ route('show', $post->id) }}">Read More</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 content-container">
-                            <div class="titlepage">
-                                <h2 class="blog-title">{{ $post->name }}</h2>
-                                <p class="blog-content">{{ $post->description }}</p>
-                                <p><i class="fa fa-user"></i> {{ $post->category->name }}</p>
-                                <!-- Optional: Add a link to view the full post -->
-                                <a class="read_more" href="{{ route('show', $post->id) }}">Read More</a>
-                            </div>
-                        </div>
+                        @else
+                            <p>No post found.</p>
+                        @endif
                     </div>
-                @else
-                    <p>No post found.</p>
-                @endif
+                    <div class="col-4">
+                        @php
+                            $posts = $posts->sortByDesc('updated_at')->take(3);
+                        @endphp
+                        @foreach ($posts as $post)
+                            <div class="row d_flex blog-item" id="blogList">
+                                <div class="col-lg-12 image-container">
+                                    <div class="perfect_img">
+                                        <span>{{ $post->updated_at->format('d M Y') }}</span>
+                                        <figure><img src="{{ asset('images/' . $post->image) }}" alt="#"
+                                                style="object-fit: cover; width: 50vw; height: 25vh;" /></figure>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 content-container">
+                                    <div class="titlepage">
+                                        <span><i class="fa fa-user"></i> {{ $post->category->name }}</span>
+                                        <p class="blog-title" style="font-size:25px;margin-top:10px;font-weight:600">
+                                            {{ $post->name }}</p>
+                                        <p class="blog-content" style="overflow:hidden;height:11vh;">
+                                            {{ $post->description }}</p>
+                                        <a class="read_more" href="{{ route('show', $post->id) }}"
+                                            style="background:none">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
         <!--  footer -->
