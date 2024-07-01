@@ -64,11 +64,5 @@
                 </tbody>
             </table>
         </div>
-        {{-- Conditional pagination display --}}
-        @if ($posts->count() >= 10)
-            <div class="d-flex justify-content-center mt-4">
-                {{ $posts->links('pagination::bootstrap-4') }}
-            </div>
-        @endif
     </div>
 @endsection

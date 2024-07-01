@@ -50,11 +50,11 @@
                     </tbody>
                 </table>
                 {{-- Conditional pagination display --}}
-                @if (count($posts) >= 10)
+                {{-- @if (count($posts) >= 10)
                     <div class="d-flex justify-content-center mt-4">
                         {{ $posts->links() }}
                     </div>
-                @endif
+                @endif --}}
             </div>
         @else
             <div class="alert alert-warning rounded">
